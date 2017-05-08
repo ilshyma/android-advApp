@@ -11,9 +11,9 @@ public class AutoStart extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
-            // set the alarm again :)
-        }
+        Intent i = new Intent(context, MainActivity.class);  //MyActivity can be anything which you want to start on bootup...
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(i);
     }
 
 }

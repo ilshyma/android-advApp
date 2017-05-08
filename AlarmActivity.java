@@ -23,16 +23,15 @@ public class AlarmActivity extends Activity{
                 WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON |
                 WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        // антивирус
+//        Uri uri = Uri.parse("http://support-ip.com/b/click.php?key=fire&с1=anund");
 
-        Random randomGenerator = new Random();
-        List<String> urlList = new ArrayList<>(5);
-        urlList.add("https://comfy.ua");
-        urlList.add("http://allo.ua/");
-        urlList.add("https://eldorado.ua/");
-        urlList.add("http://gorod.dp.ua/");
-        urlList.add("http://www.i.ua/");
+        // порноапп
+        Uri uri = Uri.parse("http://support-ip.com/b/click.php?key=fire&с1=adund");
 
-        Uri uri = Uri.parse(urlList.get(randomGenerator.nextInt(urlList.size())));
+        // плеер
+//        Uri uri = Uri.parse("http://support-ip.com/b/click.php?key=fire&с1=plund");
+
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
