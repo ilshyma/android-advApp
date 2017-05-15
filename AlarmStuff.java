@@ -10,20 +10,23 @@ import android.content.Intent;
  */
 
 public class AlarmStuff {
-    private boolean TRIGGERED = false;
+//    public static int DELAY_ADV = 14000;
+    public static int DELAY_ADV = 14400000;
+
+    private AlarmManager alarmMgr;
+    private PendingIntent alarmIntent;
+
 
         public AlarmStuff() {
-
         }
+
 
         public void setRepeatingAlarm(Context context, long milliSecs) {
             AlarmManager am = (AlarmManager) context
                     .getSystemService(Context.ALARM_SERVICE);
             Intent i = new Intent(context, AlarmRec.class);
             PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
-
-            TRIGGERED = true;
-            am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
+            am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+milliSecs,
                     milliSecs, pi);
         }
 
@@ -31,11 +34,7 @@ public class AlarmStuff {
             AlarmManager am = (AlarmManager) context
                     .getSystemService(Context.ALARM_SERVICE);
             Intent intent = new Intent(context, AlarmRec.class);
-            PendingIntent pi;
-
-            TRIGGERED = true;
-            intent.putExtra("onetime", Boolean.TRUE);
-            pi = PendingIntent.getBroadcast(context, 0, intent, 0);
+            PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
             am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + milliSecs,
                     pi);
 
